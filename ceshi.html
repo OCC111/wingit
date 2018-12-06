@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>your title name</title>
+    <meta charset="utf-8">
+    <meta name="Author" content="Wilson Xu">
+    <style type="text/css">
+      *{margin: 0;padding: 0;font-family: "Microsoft yahei";}
+      a{text-decoration: none;}
+      a img{display: block;border: none;}
+      li{list-style: none;}
+ 
+      .container{
+        width: 1200px;
+        padding: 20px;
+        margin: 10px auto;
+        border: 1px dashed #ccc;
+      }
+      .container h4{padding-bottom: 5px;}
+      .container ul{
+        width: 1200px;
+        overflow: hidden;
+      }
+      .container ul li{
+        float: left;
+        margin-right: 20px;
+      }
+      .container section:not(:nth-child(1)) h4{
+        margin-top: 20px;
+        border-top: 1px dashed #ccc;
+      }
+      /*圆角处理-需要加前缀来兼容其他浏览器，使用时，请自行查看caniuse网站的兼容性列表*/
+      .container ul.radius li:nth-child(1){
+        width: 200px;
+        height: 100px;
+        border-radius: 50%;
+        background: #f00;
+      }
+      .container ul.radius li:nth-child(2){
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        background: #0f0;
+      }
+      .container ul.radius li:nth-child(3){
+        width: 100px;
+        height: 100px;
+        border-radius: 50px 20px;/*两个值时：左上右下，右上左下*/
+        background: #00f;
+      }
+      .container ul.radius li:nth-child(4){
+        width: 100px;
+        height: 100px;
+        border-radius: 50px 20px 5px;/*三个值时：左上，右上左下，右下*/
+        background: cyan;
+      }
+      .container ul.radius li:nth-child(5){
+        width: 100px;
+        height: 100px;
+        border-radius: 100px 0 0 0;/*四个值时：从左上到左下顺时针方向*/
+        border-top-left-radius: 100px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background: pink;
+      }
+ 
+      section p{
+        width: 400px;
+        font-size: 14px;
+        border: 1px dashed #ccc;
+      }
+      section p.txt{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      /*多行超出隐藏-兼容Chrome*/
+      section p.txt-lines{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      /*多行超出隐藏兼容写法*/
+      section p#txt{
+        height: 40px;
+        position: relative;
+        line-height: 20px;
+        overflow: hidden;
+      }
+      section p.ellipsis:after{
+        content: '...';
+        height: 20px;
+        line-height: 20px;
+        position: absolute;
+        right: 4px;
+        bottom: 0;
+        background: #fff;
+      }
+ 
+      section label{
+        font-size: 14px;
+      }
+      /*古文排版*/
+      section p.rtl{
+        direction: rtl;/*表现形式将文本整体右对齐*/
+        unicode-bidi: bidi-override;
+      }
+      /*文本阴影*/
+      section p.shadow{
+        color: #fff;
+        text-shadow: 1px 0px 3px #000, 2px 0 3px #ccc;
+      }
+      section p.shadow1{
+        color: transparent;
+        text-shadow: 0px 0px 2px #000;
+      }
+      /*文本描边*/
+      section p.stroke{
+        color: #fff;
+        font-size: 20px;
+        -webkit-text-stroke: 1px #333;
+      }
+      /*文字大小写及首字母大写转化*/
+      section p.uppercase{
+        text-transform: uppercase;
+      }
+      section p.lowercase{
+        text-transform: lowercase;
+      }
+      section p.capitalize{
+        text-transform: capitalize;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h4>1、border-radius: 百分比 | px／(1,2,3,4)个值</h4>
+        <ul class="radius">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </section>
+      <section>
+        <h4>2、单行文本超出隐藏</h4>
+        <p class="txt">我的职业是web前端工程师+salesforce实施顾问，虽然我是小前端，但也有大梦想！</p>
+      </section>
+      <section>
+        <h4>3、多行文本超出隐藏（Chrome）</h4>
+        <p class="txt-lines">我的职业是web前端工程师+salesforce实施顾问，虽然我是小前端，但也有大梦想！我希望能找到一个体面的工作，并能够earn much money。</p>
+      </section>
+      <section>
+        <h4>4、多行文本超出隐藏（利用借助css和js实现的兼容写法）</h4>
+        <p id="txt">我的职业是web前端工程师+salesforce实施顾问，虽然我是小前端，但也有大梦想！我希望能找到一个体面的工作，并能够earn much money。</p>
+      </section>
+      <section>
+        <h4>5、文字的处理：文字的摆放形式、文字阴影、文字的大小写或首字母大写转化</h4>
+          <label>古文排版:</label><p class="rtl">丹青不知老将至，贫贱于我如浮云。——杜甫</p>
+          <label>text-shadow:</label>
+          <p class="shadow">穷则独善其身，达则兼善天下</p>
+          <p class="shadow1">穷则独善其身，达则兼善天下</p>
+          <label>文字描边：-webkit-text-stroke(Chrome/Firefox/Safari/IE10+)</label><p class="stroke">百学须先立志</p>
+          <label>uppercase:</label><p class="uppercase">hello html5, I AM A NEWER IN THE FIELD.</p>
+          <label>lowercase:</label><p class="lowercase">hello html5, I AM A NEWER IN THE FIELD.</p>
+          <label>capitalize:</label><p class="capitalize">hello html5, I AM A NEWER IN THE FIELD.</p>
+      </section>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var oTxt = document.getElementById('txt');
+    if(oTxt.scrollHeight > oTxt.clientHeight){//如果文本的高度>设置的区域宽度就为该区块增加一个lei名
+      oTxt.className += 'ellipsis';
+    }
+  </script>
+</html>
